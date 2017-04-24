@@ -23,7 +23,7 @@ def main():
 
 def find_parent_id(conn, channel_id: int):
     c = conn.cursor()
-    c.execute('SELECT parent_id FROM channels WHERE channel_id = ' + str(channel_id))
+    c.execute('SELECT parent_id FROM channels WHERE channel_id = ?', str(channel_id))
     parent = c.fetchone()
     if parent is not None:
         parent = parent[0]
